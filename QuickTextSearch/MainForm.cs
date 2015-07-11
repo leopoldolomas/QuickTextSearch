@@ -26,11 +26,29 @@ namespace MergeHelper
 
         private string searchTextInContent(string textToSearch, string content)
         {
-            string output = String.Empty;
+            if (String.IsNullOrEmpty(txtToSearch.Text))
+            {
+                return OriginalText;
+            }
 
-            var lines = new List<string>(content.Split(new string[] { "\r\n" }, StringSplitOptions.RemoveEmptyEntries));
-            var result = lines.Where(i => i.ToLower().Contains(textToSearch.ToLower())).ToList();
-            result.ForEach(i => copyTextLineIntoStr(i, ref output));
+            string output = String.Empty;
+            var itemsToSearchFor = textToSearch.Trim().Split(' ').ToList();
+            var lines = new List<string>(OriginalText.Split(new string[] { "\r\n" }, StringSplitOptions.RemoveEmptyEntries));
+            var result = new List<string>();
+
+            foreach(string item in itemsToSearchFor)
+            {
+                result.AddRange(lines.Where(i => i.ToLower().Contains(item.ToLower())).ToList());
+            }
+
+            result = result.Distinct().ToList();
+
+            var dict = new Dictionary<int, string>();
+            result.ForEach(i => dict.Add(lines.IndexOf(i), i));
+
+            var keys = dict.Keys.ToList();
+            keys.Sort();
+            keys.ForEach(i => copyTextLineIntoStr(dict[i], ref output));
 
             return output;
         }
@@ -42,18 +60,15 @@ namespace MergeHelper
             txtContent.Text = searchTextInContent(txtToSearch.Text, OriginalText);
         }
 
-        private void txtToSearch_KeyDown(object sender, KeyEventArgs e)
-        {
-            if (String.IsNullOrEmpty((sender as TextBox).Text))
-            {
-                OriginalText = txtContent.Text;
-            }
-        }
-
         private void btnClear_Click(object sender, EventArgs e)
         {
             txtToSearch.Clear();
         }
         #endregion
+
+        private void txtContent_KeyUp(object sender, KeyEventArgs e)
+        {
+            OriginalText = txtContent.Text;
+        }
     }
 }

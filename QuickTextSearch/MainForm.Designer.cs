@@ -40,11 +40,13 @@
             // 
             this.txtContent.Dock = System.Windows.Forms.DockStyle.Fill;
             this.txtContent.Location = new System.Drawing.Point(0, 55);
+            this.txtContent.MaxLength = 2147483647;
             this.txtContent.Multiline = true;
             this.txtContent.Name = "txtContent";
             this.txtContent.ScrollBars = System.Windows.Forms.ScrollBars.Both;
             this.txtContent.Size = new System.Drawing.Size(903, 503);
             this.txtContent.TabIndex = 0;
+            this.txtContent.KeyUp += new System.Windows.Forms.KeyEventHandler(this.txtContent_KeyUp);
             // 
             // panel1
             // 
@@ -74,7 +76,6 @@
             this.txtToSearch.Size = new System.Drawing.Size(216, 20);
             this.txtToSearch.TabIndex = 3;
             this.txtToSearch.TextChanged += new System.EventHandler(this.txtToSearch_TextChanged);
-            this.txtToSearch.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtToSearch_KeyDown);
             // 
             // label1
             // 
