@@ -33,7 +33,11 @@
             this.btnClear = new System.Windows.Forms.Button();
             this.txtToSearch = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.label2 = new System.Windows.Forms.Label();
+            this.txtItemsNotFound = new System.Windows.Forms.TextBox();
             this.panel1.SuspendLayout();
+            this.panel2.SuspendLayout();
             this.SuspendLayout();
             // 
             // txtContent
@@ -44,7 +48,7 @@
             this.txtContent.Multiline = true;
             this.txtContent.Name = "txtContent";
             this.txtContent.ScrollBars = System.Windows.Forms.ScrollBars.Both;
-            this.txtContent.Size = new System.Drawing.Size(903, 503);
+            this.txtContent.Size = new System.Drawing.Size(633, 503);
             this.txtContent.TabIndex = 0;
             this.txtContent.KeyUp += new System.Windows.Forms.KeyEventHandler(this.txtContent_KeyUp);
             // 
@@ -86,12 +90,42 @@
             this.label1.TabIndex = 2;
             this.label1.Text = "Text to search:";
             // 
+            // panel2
+            // 
+            this.panel2.Controls.Add(this.txtItemsNotFound);
+            this.panel2.Controls.Add(this.label2);
+            this.panel2.Dock = System.Windows.Forms.DockStyle.Right;
+            this.panel2.Location = new System.Drawing.Point(633, 55);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(270, 503);
+            this.panel2.TabIndex = 2;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Dock = System.Windows.Forms.DockStyle.Top;
+            this.label2.Location = new System.Drawing.Point(0, 0);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(83, 13);
+            this.label2.TabIndex = 0;
+            this.label2.Text = "Items not found:";
+            // 
+            // txtItemsNotFound
+            // 
+            this.txtItemsNotFound.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.txtItemsNotFound.Location = new System.Drawing.Point(0, 13);
+            this.txtItemsNotFound.Multiline = true;
+            this.txtItemsNotFound.Name = "txtItemsNotFound";
+            this.txtItemsNotFound.Size = new System.Drawing.Size(270, 490);
+            this.txtItemsNotFound.TabIndex = 1;
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(903, 558);
             this.Controls.Add(this.txtContent);
+            this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
             this.Name = "MainForm";
             this.ShowIcon = false;
@@ -99,6 +133,8 @@
             this.Text = "Quick Text Search";
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
+            this.panel2.ResumeLayout(false);
+            this.panel2.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -111,6 +147,9 @@
         private System.Windows.Forms.TextBox txtToSearch;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button btnClear;
+        private System.Windows.Forms.Panel panel2;
+        private System.Windows.Forms.TextBox txtItemsNotFound;
+        private System.Windows.Forms.Label label2;
     }
 }
 
